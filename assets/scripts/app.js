@@ -1,23 +1,29 @@
 const backdrop = document.getElementById('backdrop');
-const addMovieButton = document.querySelector('header').lastElementChild;
 const movieModal = document.getElementById('add-modal');
-const movieModalAction = movieModal.querySelector('.modal__actions');
+const movieModalContent = movieModal.firstElementChild;
+const input = movieModalContent.querySelectorAll('input');
+const movieModalAction = movieModal.lastElementChild;
 const cancel = movieModalAction.firstElementChild;
 const add = movieModalAction.lastElementChild;
+const addMovieButton = document.querySelector('header').lastElementChild;
 
-// console.log(
-//   backdrop,
-//   add,
-//   cancel,
-//   movieModalAction,
-//   movieModal,
-//   addMovieButton
-// );
+console.log(
+  backdrop,
+  movieModal,
+  movieModalContent,
+  input,
+  movieModalAction,
+  cancel,
+  add,
+  addMovieButton
+);
 
 function toggleMovieModal() {
   backdrop.classList.toggle('visible');
   movieModal.classList.toggle('visible');
 }
+
+function getInput() {}
 
 addMovieButton.addEventListener('click', toggleMovieModal);
 cancel.addEventListener('click', toggleMovieModal);
