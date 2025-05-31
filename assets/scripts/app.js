@@ -6,8 +6,6 @@ const movieModalAction = movieModal.lastElementChild;
 const cancel = movieModalAction.firstElementChild;
 const add = movieModalAction.lastElementChild;
 const deleteModal = document.getElementById('delete-modal');
-const no = deleteModal.querySelector('.modal__actions').firstElementChild;
-const yes = deleteModal.querySelector('.modal__actions').lastElementChild;
 const addMovieButton = document.querySelector('header').lastElementChild;
 const renderMovie = document.getElementById('movie-list');
 
@@ -38,12 +36,12 @@ function addModal(userInput) {
   element.className = 'movie-element';
   element.innerHTML = `
   <div class="movie-element__image">
-      <img src="${userInput.image}" alt="${userInput.text}">
-    </div>
-    <div class="movie-element__info">
-      <h2>${userInput.text}</h2>
-      <p>${userInput.rating}/5 stars</p>
-    </div>
+  <img src="${userInput.image}" alt="${userInput.text}">
+  </div>
+  <div class="movie-element__info">
+  <h2>${userInput.text}</h2>
+  <p>${userInput.rating}/5 stars</p>
+  </div>
   `;
   renderMovie.appendChild(element);
   clearInput();
@@ -70,6 +68,8 @@ function deleteMovie(element) {
 }
 
 function deletingMovie(element) {
+  const no = deleteModal.querySelector('.modal__actions').firstElementChild;
+  const yes = deleteModal.querySelector('.modal__actions').lastElementChild;
   toggleDeleteModal();
   no.addEventListener('click', toggleDeleteModal);
   yes.addEventListener('click', deleteMovie.bind(this, element));
