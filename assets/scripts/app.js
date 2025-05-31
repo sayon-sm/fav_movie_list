@@ -6,18 +6,16 @@ const movieModalAction = movieModal.lastElementChild;
 const cancel = movieModalAction.firstElementChild;
 const add = movieModalAction.lastElementChild;
 const deleteModal = document.getElementById('delete-modal');
+const no = deleteModal.querySelector('.modal__actions').firstElementChild;
+const yes = deleteModal.querySelector('.modal__actions').lastElementChild;
 const addMovieButton = document.querySelector('header').lastElementChild;
 const renderMovie = document.getElementById('movie-list');
 
 const modals = [];
 
-function toggleBackdrop() {
-  backdrop.classList.toggle('visible');
-}
-
 function toggleMovieModal() {
   movieModal.classList.toggle('visible');
-  toggleBackdrop();
+  backdrop.classList.toggle('visible');
 }
 
 function clearInput() {
@@ -51,11 +49,31 @@ function addModal(userInput) {
   clearInput();
   toggleMovieModal();
   modals.push(element);
+
+  element.addEventListener('click', deletingMovie.bind(this, element));
+  console.log(element);
 }
 
 function cancelModal() {
   clearInput();
   toggleMovieModal();
+}
+
+function toggleDeleteModal() {
+  deleteModal.classList.toggle('visible');
+  backdrop.classList.toggle('visible');
+}
+
+function deleteMovie(element) {
+  element.remove();
+  toggleDeleteModal();
+}
+
+function deletingMovie(element) {
+  toggleDeleteModal();
+  no.addEventListener('click', toggleDeleteModal);
+  yes.addEventListener('click', deleteMovie.bind(this, element));
+  console.log(element);
 }
 
 addMovieButton.addEventListener('click', toggleMovieModal);
