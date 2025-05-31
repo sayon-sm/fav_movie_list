@@ -1,13 +1,13 @@
 const backdrop = document.getElementById('backdrop');
-const movieModal = document.getElementById('add-modal');
+const movieModal = document.getElementById('add-modal'); // pop-up to add movie details
 const movieModalContent = movieModal.firstElementChild;
-const input = movieModalContent.querySelectorAll('input');
+const input = movieModalContent.querySelectorAll('input'); // accessing all the input values
 const movieModalAction = movieModal.lastElementChild;
-const cancel = movieModalAction.firstElementChild;
-const add = movieModalAction.lastElementChild;
-const deleteModal = document.getElementById('delete-modal');
-const addMovieButton = document.querySelector('header').lastElementChild;
-const renderMovie = document.getElementById('movie-list');
+const cancel = movieModalAction.firstElementChild; // button to cancel the pop-up
+const add = movieModalAction.lastElementChild; // button to add movie as per input
+const deleteModal = document.getElementById('delete-modal'); // pop-up to remove a movie from list
+const addMovieButton = document.querySelector('header').lastElementChild; // button that brings up the mpvie modal pop-up
+const renderMovie = document.getElementById('movie-list'); // unordered list where movies are added
 
 const modals = [];
 
