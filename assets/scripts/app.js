@@ -28,7 +28,15 @@ function getInput() {
     image: input[1].value,
     rating: input[2].value,
   };
-  addModal(userInput);
+  console.log(userInput.text, userInput.image, userInput.rating);
+  if (
+    userInput.text === '' ||
+    userInput.image === '' ||
+    +userInput.rating < 0 ||
+    +userInput.rating > 6
+  ) {
+    alert('Incorrect User Input !');
+  } else addModal(userInput);
 }
 
 function addModal(userInput) {
