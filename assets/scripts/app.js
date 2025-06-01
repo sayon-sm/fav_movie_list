@@ -28,12 +28,12 @@ function getInput() {
     image: input[1].value,
     rating: input[2].value,
   };
-  console.log(userInput.text, userInput.image, userInput.rating);
   if (
     userInput.text === '' ||
     userInput.image === '' ||
+    !+userInput.rating ||
     +userInput.rating < 0 ||
-    +userInput.rating > 6
+    +userInput.rating > 5
   ) {
     alert('Incorrect User Input !');
   } else addModal(userInput);
@@ -57,7 +57,6 @@ function addModal(userInput) {
   modals.push(element);
 
   element.addEventListener('click', deletingMovie.bind(this, element));
-  console.log(element);
 }
 
 function cancelModal() {
@@ -81,7 +80,6 @@ function deletingMovie(element) {
   toggleDeleteModal();
   no.addEventListener('click', toggleDeleteModal);
   yes.addEventListener('click', deleteMovie.bind(this, element));
-  console.log(element);
 }
 
 addMovieButton.addEventListener('click', toggleMovieModal);
