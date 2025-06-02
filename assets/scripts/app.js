@@ -11,9 +11,12 @@ const renderMovie = document.getElementById('movie-list'); // unordered list whe
 
 const modals = [];
 
+function toggleBackdrop() {
+  backdrop.classList.toggle('visible');
+}
+
 function toggleMovieModal() {
   movieModal.classList.toggle('visible');
-  backdrop.classList.toggle('visible');
 }
 
 // clear input field of modal
@@ -58,6 +61,7 @@ function addModal(userInput) {
   renderMovie.appendChild(element);
   clearInput();
   toggleMovieModal();
+  toggleBackdrop();
   modals.push(element); // stores modal created in array
 
   element.addEventListener('click', deletingMovie.bind(this, element)); // adding eventlistner to later delete modal
@@ -66,6 +70,7 @@ function addModal(userInput) {
 function cancelModal() {
   clearInput();
   toggleMovieModal();
+  toggleBackdrop();
 }
 
 function toggleDeleteModal() {
@@ -81,14 +86,27 @@ function deleteMovie(element) {
 
 // accessing buttons from pop-up for deleting modal
 function deletingMovie(element) {
+  toggleBackdrop();
   const no = deleteModal.querySelector('.modal__actions').firstElementChild;
   const yes = deleteModal.querySelector('.modal__actions').lastElementChild;
   toggleDeleteModal();
   no.addEventListener('click', toggleDeleteModal);
   yes.addEventListener('click', deleteMovie.bind(this, element));
+  toggleBackdrop();
 }
 
-addMovieButton.addEventListener('click', toggleMovieModal);
+addMovieButton.addEventListener('click', () => {
+  toggleMovieModal();
+  toggleBackdrop();
+});
 cancel.addEventListener('click', cancelModal);
 add.addEventListener('click', getInput);
-backdrop.addEventListener('click', toggleMovieModal);
+backdrop.addEventListener('click', () => {
+  toggleBackdrop();
+  if (movieModal.classList.contains('visible')) {
+    movieModal.classList.remove('visible');
+  }
+  if (deleteModal.classList.contains('visible')) {
+    deleteModal.classList.remove('visible');
+  }
+});
