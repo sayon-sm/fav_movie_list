@@ -90,8 +90,8 @@ function deletingMovie(element) {
   const no = deleteModal.querySelector('.modal__actions').firstElementChild;
   const yes = deleteModal.querySelector('.modal__actions').lastElementChild;
   toggleDeleteModal();
-  no.addEventListener('click', toggleDeleteModal);
-  yes.addEventListener('click', deleteMovie.bind(this, element));
+  no.onclick = toggleDeleteModal;
+  yes.onclick = deleteMovie.bind(this, element);
   toggleBackdrop();
 }
 
