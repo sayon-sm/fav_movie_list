@@ -1,3 +1,4 @@
+'use strict';
 const backdrop = document.getElementById('backdrop');
 const movieModal = document.getElementById('add-modal'); // pop-up to add movie details
 const movieModalContent = movieModal.firstElementChild;
@@ -21,7 +22,7 @@ function toggleMovieModal() {
 
 // clear input field of modal
 function clearInput() {
-  for (ele of input) {
+  for (const ele of input) {
     ele.value = '';
   }
 }
